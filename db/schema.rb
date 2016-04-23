@@ -13,23 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20160423095430) do
 
-  create_table "sounds", force: :cascade do |t|
-    t.integer  "file_id"
-    t.integer  "PRIMARYKEY AUTO_INCREMENT"
-    t.binary   "data",                      null: false
-    t.string   "title",                     null: false
+  create_table "sounds", primary_key: "file_id", force: :cascade do |t|
+    t.binary   "data",       null: false
+    t.string   "title",      null: false
     t.string   "comment"
-    t.float    "lat",                       null: false
-    t.float    "lon",                       null: false
-    t.integer  "user_id",                   null: false
+    t.float    "lat",        null: false
+    t.float    "lon",        null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "user_name", null: false
-    t.string  "password",  null: false
+  create_table "users", primary_key: "user_id", force: :cascade do |t|
+    t.string "user_name", null: false
+    t.string "password",  null: false
   end
 
   add_index "users", ["user_name"], name: "index_users_on_user_name", unique: true
