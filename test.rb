@@ -1,0 +1,1 @@
+p ENV['RACK_ENV']

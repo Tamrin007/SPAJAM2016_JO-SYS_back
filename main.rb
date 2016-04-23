@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'sinatra/base'
-require 'active_record'
+require 'sinatra/activerecord'
+require 'dotenv'
+
+Dotenv.load
 
 ActiveRecord::Base.configurations = YAML.load_file('database.yml')
 ActiveRecord::Base.establish_connection(ENV['RACK_ENV'])
@@ -23,4 +26,3 @@ class MainApp < Sinatra::Base
 			status 202
 		end
 end
-
