@@ -18,9 +18,15 @@ class MainApp < Sinatra::Base
 			'Hello, World!'
 		end
 
-		get '/get_sound' do
-			sound_data = Sound.where(user_id: params[:user_id])
+		get '/get_sound/:file_id' do |id|
+			sound_data = Sound.select("data").where(user_id: id)
 			p sound_data
+			p "ian"
+		end
+
+		get '/get_info/:title' do |title|
+			sound_info = Sound.select("title", "comment").where(title: title)
+			p sound_info
 			p "ian"
 		end
 
