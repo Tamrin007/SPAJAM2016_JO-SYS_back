@@ -15,4 +15,12 @@ class MainApp < Sinatra::Base
     get '/' do
         'Hello, World!'
     end
+
+		post '/' do
+			user = User.new
+			user.user_name = params[:user_name]
+			user.password = params[:password]
+			user.save!
+			status 202
+		end
 end
