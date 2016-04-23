@@ -3,6 +3,7 @@
 ## Install
 
 ```sh
-bundle install --path vendor/bundle --without production
+$ bundle install --path vendor/bundle --without production
+$ gem install foreman
+$ foreman start
 ```
-
