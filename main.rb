@@ -20,15 +20,13 @@ class MainApp < Sinatra::Base
 		end
 
 		get '/get_sound/:file_id' do |id|
-			sound_data = Sound.select("data").where(user_id: id)
-            p "・バイナリテキスト"
+			sound_data = Sound.where(file_id: id).to_json
 			p sound_data
 		end
 
 		get '/get_info/:title' do |title|
-			sound_info = Sound.select("title", "comment").where(title: title)
-            p "・曲情報"
-            p sound_info
+			sound_info = Sound.select("file_id", "title", "comment").where(title: title).to_json
+      p sound_info
 		end
 
 		post '/sign_up' do
