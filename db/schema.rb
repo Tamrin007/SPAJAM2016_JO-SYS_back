@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423074833) do
+ActiveRecord::Schema.define(version: 20160423095430) do
+
+  create_table "sounds", force: :cascade do |t|
+    t.integer  "file_id"
+    t.integer  "PRIMARYKEY AUTO_INCREMENT"
+    t.binary   "sound_data",                null: false
+    t.string   "title",                     null: false
+    t.string   "comment"
+    t.float    "lat",                       null: false
+    t.float    "lon",                       null: false
+    t.integer  "user_id",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.integer "user_id"
