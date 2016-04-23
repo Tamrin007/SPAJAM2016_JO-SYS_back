@@ -1,7 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def up
-		create_table :users do |t|
-			t.column :user_id, 'INTEGER PRIMARYKEY AUTO_INCREMENT'
+		create_table(:users, primary_key: 'user_id') do |t|
 			t.string :user_name, :null => false
 			t.string :password, :null => false
   	end

@@ -5,11 +5,12 @@ require 'dotenv'
 
 Dotenv.load
 
-ActiveRecord::Base.configurations = YAML.load_file('database.yml')
+ActiveRecord::Base.configurations = YAML.load_file('config/database.yml')
 ActiveRecord::Base.establish_connection(ENV['RACK_ENV'])
 
 class User < ActiveRecord::Base
 end
+
 class Sound < ActiveRecord::Base
 end
 

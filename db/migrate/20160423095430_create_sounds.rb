@@ -1,7 +1,6 @@
 class CreateSounds < ActiveRecord::Migration
   def up
-		create_table :sounds do |t|
-			t.integer :file_id, 'PRIMARYKEY AUTO_INCREMENT'
+		create_table(:sounds, primary_key: 'file_id') do |t|
 			t.binary :data, :null => false
 			t.string :title, :null => false
 			t.string :comment
@@ -11,7 +10,7 @@ class CreateSounds < ActiveRecord::Migration
 			t.timestamps
 		end
   end
-	
+
 	def down
 		drop_table :users
 	end
