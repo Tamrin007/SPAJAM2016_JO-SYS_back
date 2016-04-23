@@ -10,6 +10,7 @@ gem 'unicorn'
 # ActiveRecord
 gem 'sinatra-activerecord'
 gem 'activerecord'
+gem 'dotenv'
 
 group :development, :test do
 	# Build tool
