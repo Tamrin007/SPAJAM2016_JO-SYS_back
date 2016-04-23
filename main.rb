@@ -18,11 +18,30 @@ class MainApp < Sinatra::Base
 			'Hello, World!'
 		end
 
-		post '/' do
+		get '/get_sound' do
+			sound_data = Sound.where(user_id: params[:user_id])
+			p sound_data
+			p "ian"
+		end
+
+		post '/sign_up' do
 			user = User.new
 			user.user_name = params[:user_name]
 			user.password = params[:password]
 			user.save!
 			status 202
 		end
+
+		post '/post_sound' do
+			sound = Sound.new
+			sound.data = params[:data]
+			sound.title = params[:title]
+			sound.comment = params[:comment]
+			sound.lat = params[:lat]
+			sound.lon = params[:lon]
+			sound.user_id = params[:user_id]
+			sound.save!
+			status 202
+		end
+
 end
