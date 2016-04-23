@@ -5,8 +5,9 @@ require 'dotenv'
 
 Dotenv.load
 
+environment = ENV['RACK_ENV'].to_sym
 ActiveRecord::Base.configurations = YAML.load_file('config/database.yml')
-ActiveRecord::Base.establish_connection(ENV['RACK_ENV'])
+ActiveRecord::Base.establish_connection(environment)
 
 class User < ActiveRecord::Base
 end
