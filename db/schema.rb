@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160423095430) do
   create_table "sounds", force: :cascade do |t|
     t.integer  "file_id"
     t.integer  "PRIMARYKEY AUTO_INCREMENT"
-    t.binary   "sound_data",                null: false
+    t.binary   "data",                      null: false
     t.string   "title",                     null: false
     t.string   "comment"
     t.float    "lat",                       null: false
