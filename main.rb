@@ -7,11 +7,13 @@ ActiveRecord::Base.establish_connection(ENV['RACK_ENV'])
 
 class User < ActiveRecord::Base
 end
+class Sound < ActiveRecord::Base
+end
 
 class MainApp < Sinatra::Base
-    get '/' do
-        'Hello, World!'
-    end
+		get '/' do
+			'Hello, World!'
+		end
 
 		post '/' do
 			user = User.new
