@@ -30,6 +30,13 @@ class MainApp < Sinatra::Base
             p sound_info
 		end
 
+        get '/locate' do
+            lat = params[:lat]
+            lon = params[:lon]
+            near_point = Sound.select("file_id", "title", "comment").find_by_sql("SELECT SQRT(POWER((#{lat} - lat), 2) + POWER((#{lon} - lon), 2)) AS distance FROM sounds ORDER BY distance").to_json
+            p near_point
+        end
+
 		post '/sign_up' do
 			user = User.new
 			user.user_name = params[:user_name]
