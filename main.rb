@@ -37,6 +37,11 @@ class MainApp < Sinatra::Base
             p near_point
         end
 
+        get '/get_userid' do
+            name = params[:user_name]
+            user_name = User.where(user_name: name).to_json
+        end
+
 		post '/sign_up' do
 			user = User.new
 			user.user_name = params[:user_name]
@@ -56,4 +61,12 @@ class MainApp < Sinatra::Base
 			sound.save!
 			status 202
 		end
+
+        delete '/del_sound/:id' do |id|
+            sound = Sound.find(id).destroy
+        end
+
+        delete '/del_user/:id' do |id|
+            user = User.find(id).destroy
+        end
 end
