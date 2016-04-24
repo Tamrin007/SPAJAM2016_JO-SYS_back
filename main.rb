@@ -25,9 +25,9 @@ class MainApp < Sinatra::Base
 			p sound_data
 		end
 
-		get '/get_info/:title' do |title|
-			sound_info = Sound.select("file_id", "title", "comment").where(title: title).to_json
-      p sound_info
+		get '/get_info/:keyword' do |key|
+			sound_info = Sound.select("file_id", "title", "comment").where('title like ? or comment like ?', "%#{key}%", "%#{key}%").to_json
+            p sound_info
 		end
 
 		post '/sign_up' do
@@ -49,5 +49,4 @@ class MainApp < Sinatra::Base
 			sound.save!
 			status 202
 		end
-
 end
